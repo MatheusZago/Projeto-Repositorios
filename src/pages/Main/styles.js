@@ -29,7 +29,7 @@ export const Form = styled.form`
 
     input{
         flex:1;
-        border: 1px solid #ddd;
+        border: 1px solid ${props => (props.error ? '#FF0000' : '#ddd')}; //Se tiver um erro a borda fica vermelha, e se não fica branca
         padding: 10px 15px;
         border-radius: 4px;
         font-size: 17px;
@@ -70,6 +70,7 @@ export const SubmitButton = styled.button.attrs(props => ({
       opacity: 0.5;
     }
 
+    //Aqui ta ajeitando a animação, qnt tempo o loop demora, como funciona
     ${props => props.loading &&
     css`
       svg{
@@ -78,4 +79,42 @@ export const SubmitButton = styled.button.attrs(props => ({
     `
   }
 
+`;
+
+//Aqu é o estilo da lista
+export const List = styled.ul`
+  list-style: none;
+  margin-top: 20px;
+
+
+  li{
+    padding: 15px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    //Isso está fazendo ignorar o primeiro e adicionar o estilo nos seguintes
+    & + li{
+      border-top: 1px solid #eee;
+    }
+
+    a{
+      color: #0d2636;
+      text-decoration: none;
+    }
+
+  }
+`;
+
+export const DeleteButton = styled.button.attrs({
+  type: 'button',
+})`
+
+  background: transparent;
+  color: #0D2636;
+  border: 0;
+  padding: 8px;
+  outline: 0;
+  border-radius: 4px;
 `;
